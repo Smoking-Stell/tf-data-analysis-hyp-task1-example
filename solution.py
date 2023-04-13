@@ -15,7 +15,7 @@ def solution(x_success: int,
     control_std_dev = np.sqrt(control_conversion_rate * (1 - control_conversion_rate) / x_cnt)
     test_std_dev = np.sqrt(test_conversion_rate * (1 - test_conversion_rate) / y_cnt)
 
-    t_statistic, p_value = ttest_ind_from_stats(mean1=control_conversion_rate, std1=control_std_dev, nobs1=control_applications,
-                                                mean2=test_conversion_rate, std2=test_std_dev, nobs2=test_applications)
+    t_statistic, p_value = ttest_ind_from_stats(mean1=control_conversion_rate, std1=control_std_dev, nobs1=y_cnt,
+                                                mean2=test_conversion_rate, std2=test_std_dev, nobs2=x_cnt)
 
     return p_value < alpha
